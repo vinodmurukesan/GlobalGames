@@ -1,0 +1,40 @@
+.filterWrapper {
+  display: flex;
+  overflow-x: auto;
+  height: 270px;
+  scroll-behavior: smooth;
+}
+
+.outerBox{
+  position: relative;
+}
+
+.arrow {
+  position: absolute;
+  top: 1px;
+  background-color: var(--white);
+  border: solid 1px var(--grayfff);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  cursor: pointer;
+  box-shadow: rgba(100, 100, 111, 0.15) 0px 4px 10px 0px;
+}
+
+.arrow svg{
+  width: 1rem;
+  height: auto;
+}
+
+.arrowRight {
+  right: 0;
+  transform: rotate(180deg);
+}
+
+.arrowLeft {
+  left: 0;
+}

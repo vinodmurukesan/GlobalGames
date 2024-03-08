@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.5rem;
+  background-color: var(--white);
+  position: relative;
+  margin-top: -253px;
+} 
+
+.filters {
+  padding: 1rem;
+  overflow-x: hidden;
+} 
