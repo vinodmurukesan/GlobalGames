@@ -9,12 +9,15 @@ function App() {
   const [automationData, setAutomationData] = useState([]);
   const [filterAutomationData, setFilterAutomationData] = useState([]);
   
-  const initData = () => {
-    setAutomationData(AutomationData.data.oneClickAutomations.items);
-    setFilterAutomationData(AutomationData.data.oneClickAutomations.items);
-  };
+  useEffect(() => {
+    const initData = () => {
+      const data = AutomationData.data.oneClickAutomations.items;
+      setAutomationData(data);
+      setFilterAutomationData(data);
+    };
 
-  useEffect(initData, []);
+    initData();
+  }, []); // Empty dependency array since this effect runs only once
 
   return (
     <>

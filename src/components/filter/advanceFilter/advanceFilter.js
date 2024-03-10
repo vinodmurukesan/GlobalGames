@@ -82,7 +82,7 @@ const OptionalFilter = ({
           {searchable ? (
             <FormInput
               name="search"
-              placeholder="search"
+              placeholder="Search"
               onChange={searchHandle}
               value={searchValue}
             />
