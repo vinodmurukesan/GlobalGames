@@ -1,22 +1,30 @@
 import { useRef, useEffect } from "react";
 
 export function useDebounce(func, delay = 1000) {
-  const timer = useRef();
+  const timerRef = useRef(null);
 
   useEffect(() => {
+    // Cleanup function to clear the timeout when the component unmounts
     return () => {
-      if (!timer.current) return;
-      clearTimeout(timer.current);
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
     };
   }, []);
 
   const debouncedFunction = (...args) => {
-    const newTimer = setTimeout(() => {
+    // Clear the previous timer if it exists
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
+
+    // Create a new timer
+    timerRef.current = setTimeout(() => {
+      // Call the provided function with the latest arguments after the delay
       func(...args);
     }, delay);
-    clearTimeout(timer.current);
-    timer.current = newTimer;
   };
 
+  // Return the debounced function
   return debouncedFunction;
 }
