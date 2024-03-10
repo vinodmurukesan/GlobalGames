@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState, useRef } from "react";
-import BooleanFilter from "../filter/booleanFilter";
-import OptionalFilter from "../filter/optionalFilter";
+import ToggleFilter from "../filter/toggleFilter/toggleFilter";
+import AdvanceFilter from "../filter/advanceFilter/advanceFilter";
 import TransferIcon from "../assests/svg/transferIcon";
 import MonitorIcon from "../assests/svg/monitorIcon";
 import PlusIcon from "../assests/svg/plusIcon";
@@ -94,10 +94,11 @@ const FilterAutomation = ({ data, handleFilterData }) => {
   }, [siteSelectedItems, categorySelectedItems]);
   
   return (
-    <div
+    <nav
       className={`${
         showArrow ? styles.outerBox + " activePadding" : styles.outerBox
       }`}
+      aria-label="Filter Navigation"
     >
       {showArrow ? (
         <>
@@ -124,11 +125,11 @@ const FilterAutomation = ({ data, handleFilterData }) => {
         </>
       ) : null}
 
-      <div className={styles.filterWrapper} ref={wrapperRef}>
-        <BooleanFilter text="Extract Data" icon={<TransferIcon />} />
-        <BooleanFilter text="Monitoring" icon={<MonitorIcon />} />
+      <div className={styles.filterWrapper} ref={wrapperRef} role="list">
+        <ToggleFilter text="Extract Data" icon={<TransferIcon />} />
+        <ToggleFilter text="Monitoring" icon={<MonitorIcon />} />
         {siteOptions ? (
-          <OptionalFilter
+          <AdvanceFilter
             multiOption={true}
             text="Filter by Site"
             icon={<PlusIcon />}
@@ -140,7 +141,7 @@ const FilterAutomation = ({ data, handleFilterData }) => {
         ) : null}
 
         {categoryOptions ? (
-          <OptionalFilter
+          <AdvanceFilter
             multiOption={false}
             text="Filter by Category"
             icon={<PlusIcon />}
@@ -151,7 +152,7 @@ const FilterAutomation = ({ data, handleFilterData }) => {
           />
         ) : null}
       </div>
-    </div>
+    </nav>
   );
 };
 export default FilterAutomation;

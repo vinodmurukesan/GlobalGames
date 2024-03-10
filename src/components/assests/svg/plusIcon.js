@@ -6,7 +6,9 @@ const PlusIcon = () => {
         viewBox="0 0 20 20"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
+        aria-label="Plus SVG Icon"
       >
+        <title>Plus SVG Icon</title>
         <path
           fill="#000000"
           fillRule="evenodd"

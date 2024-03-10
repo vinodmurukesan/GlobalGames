@@ -1,10 +1,10 @@
 import { useRef, useState } from "react";
-import FilterItem from "./filterItem";
-import MultipleIcon from "../assests/svg/multipleIcon";
-import styles from "./filter.module.css";
-import FormInput from "../ui/input/input";
-import { useDebounce } from "../utility/useDebounce";
-import { useDetectClickOutsideComponent } from "../utility/useDetectClickOutSideComponent";
+import FilterItem from "../filterItem/filterItem";
+import MultipleIcon from "../../assests/svg/multipleIcon";
+import styles from "./advanceFilter.module.css";
+import FormInput from "../../ui/input/input";
+import { useDebounce } from "../../utility/useDebounce";
+import { useDetectClickOutsideComponent } from "../../utility/useDetectClickOutSideComponent";
 
 const OptionalFilter = ({
   multiOption,
@@ -97,7 +97,7 @@ const OptionalFilter = ({
                     selectOptionHandle(item);
                   }}
                 >
-                  {item}
+                  <a href="javascript:void(0)">{item}</a>
                 </li>
               );
             })}

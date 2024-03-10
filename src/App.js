@@ -19,14 +19,14 @@ function App() {
   return (
     <>
       {automationData.length && (
-        <main>
-          <div className={styles.filters}>
+        <main role="main">
+          <div className={styles.filters} role="region" aria-label="Filters">
             <FilterAutomation
                 data={automationData}
                 handleFilterData={setFilterAutomationData}
               />
           </div>
-          <section className={styles.container}>
+          <section className={styles.container} role="region" aria-label="Automation Content">
             {filterAutomationData.length && filterAutomationData.map((item) => <Card data={item} key={item.id} /> )}
           </section>
         </main>

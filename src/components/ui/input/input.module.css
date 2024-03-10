@@ -1,6 +1,6 @@
 .formInput{
     padding: 0.75rem;
-    border: solid 1px var(--grayfff);
+    border: 1px solid var(--grayfff);
     border-radius: var(--radius);
     margin-bottom: 0.5rem;
 }

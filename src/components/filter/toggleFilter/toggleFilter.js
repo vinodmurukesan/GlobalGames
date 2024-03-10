@@ -1,6 +1,7 @@
 import { useState } from "react";
-import FilterItem from "./filterItem";
-import TransferIcon from "../assests/svg/transferIcon";
+import FilterItem from "../filterItem/filterItem";
+import TransferIcon from "../../assests/svg/transferIcon";
+
 const BooleanFilter = ({ text = "filter", icon = <TransferIcon /> }) => {
   const [iseSelected, setIsSelected] = useState(false);
   const clickHandler = () => {
@@ -15,4 +16,5 @@ const BooleanFilter = ({ text = "filter", icon = <TransferIcon /> }) => {
     />
   );
 };
+
 export default BooleanFilter;

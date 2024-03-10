@@ -1,15 +1,16 @@
-import styles from "./filter.module.css";
+import styles from "./filterItem.module.css";
 const FilterItem = ({ isSelected = false, text, icon, clickHandler }) => {
   return (
-    <span
+    <button
       onClick={clickHandler}
       className={`${
         isSelected ? styles.filterItem + " active" : styles.filterItem
       } `}
+      aria-label={text}
     >
       {icon}
       {text}
-    </span>
+    </button>
   );
 };
 export default FilterItem;

@@ -6,8 +6,9 @@ const TransferIcon = () => {
         viewBox="0 0 24 24"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
+        aria-label="Transfer SVG Icon"
       >
-        <title>transfer_4_line</title>
+        <title>Transfer SVG Icon</title>
         <g
           id="transfer-1"
           stroke="none"

@@ -5,7 +5,7 @@
   scroll-behavior: smooth;
 }
 
-.outerBox{
+.outerBox {
   position: relative;
 }
 
@@ -22,10 +22,10 @@
   justify-content: center;
   z-index: 2;
   cursor: pointer;
-  box-shadow: rgba(100, 100, 111, 0.15) 0px 4px 10px 0px;
+  box-shadow: rgba(100, 100, 111, 0.15) 0 4px 10px 0;
 }
 
-.arrow svg{
+.arrow svg {
   width: 1rem;
   height: auto;
 }

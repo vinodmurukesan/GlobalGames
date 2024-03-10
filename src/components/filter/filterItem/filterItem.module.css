@@ -1,0 +1,28 @@
+.filterItem {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.85rem;
+    height: 2rem;
+    color: var(--gray700);
+    border: solid 1px var(--gray700);
+    border-radius: 2rem;
+    cursor: pointer;
+    margin-right: 0.75rem;
+    transition: all var(--transitionSpeed500ms);
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    background-color: var(--white);
+
+    &:focus,
+    &:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+      outline: none;
+    }
+
+    svg {
+      width: 1rem;
+      height: auto;
+      margin-right: 0.25rem;
+    }
+  }
