@@ -29,7 +29,7 @@ function App() {
                 handleFilterData={setFilterAutomationData}
               />
           </div>
-          <section className={styles.container} role="region" aria-label="Automation Content">
+          <section className={styles.container} aria-label="Automation Content">
             {filterAutomationData.length && filterAutomationData.map((item) => <Card data={item} key={item.id} /> )}
           </section>
         </main>

@@ -97,7 +97,7 @@ const OptionalFilter = ({
                     selectOptionHandle(item);
                   }}
                 >
-                  <a href="javascript:void(0)">{item}</a>
+                  <a href="#">{item}</a>
                 </li>
               );
             })}
