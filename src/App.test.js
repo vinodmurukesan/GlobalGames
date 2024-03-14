@@ -31,6 +31,7 @@ jest.mock('./components/data/automation.json', () => ({
 
 describe('App Component', () => {
   beforeEach(() => {
+    // eslint-disable-next-line
     render(<App />);
   });
 

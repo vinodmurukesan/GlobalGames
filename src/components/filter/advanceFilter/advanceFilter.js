@@ -97,7 +97,7 @@ const OptionalFilter = ({
                     selectOptionHandle(item);
                   }}
                 >
-                  <a href="#">{item}</a>
+                  <a href={"#" + item}>{item}</a>
                 </li>
               );
             })}
