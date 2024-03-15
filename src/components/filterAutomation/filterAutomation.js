@@ -20,14 +20,14 @@ const FilterAutomation = ({ data, handleFilterData }) => {
   const getFilterOptions = useCallback(() => {
     // Extract unique category titles from all items in 'data'
     const categoryFilter = data.flatMap((item) =>
-      item.categories.map((category) => category.title)
+      item.categories.map((category) => category.title),
     );
-  
+
     // Extract unique site titles from all items in 'data'
     const siteFilter = data.flatMap((item) =>
-      item.sites.map((site) => site.title)
+      item.sites.map((site) => site.title),
     );
-  
+
     // Update state variables with unique category and site titles
     setCategoryOptions(Array.from(new Set(categoryFilter)));
     setSiteOptions(Array.from(new Set(siteFilter)));
@@ -37,7 +37,9 @@ const FilterAutomation = ({ data, handleFilterData }) => {
     if (siteSelectedItems.length) {
       // Filter dataList to include only items that have sites matching the selected site titles
       return dataList.filter((item) =>
-        item.sites.some((siteItem) => siteSelectedItems.includes(siteItem.title))
+        item.sites.some((siteItem) =>
+          siteSelectedItems.includes(siteItem.title),
+        ),
       );
     }
     // If no site is selected, return the original dataList
@@ -47,7 +49,9 @@ const FilterAutomation = ({ data, handleFilterData }) => {
   const handleCategoryChange = (dataList) => {
     if (categorySelectedItems.length) {
       return dataList.filter((item) =>
-        item.categories.some((catItem) => catItem.title === categorySelectedItems[0])
+        item.categories.some(
+          (catItem) => catItem.title === categorySelectedItems[0],
+        ),
       );
     }
     return dataList;
@@ -66,15 +70,16 @@ const FilterAutomation = ({ data, handleFilterData }) => {
   const handleScroll = (value) => {
     const { current } = wrapperRef;
     const newScrollLeft = current.scrollLeft + value;
-    
+
     current.scrollTo({
       left: newScrollLeft,
       behavior: "smooth",
     });
-    
-    const isEndScrollDisabled = newScrollLeft + 50 > current.scrollWidth - current.clientWidth;
+
+    const isEndScrollDisabled =
+      newScrollLeft + 50 > current.scrollWidth - current.clientWidth;
     const isStartScrollDisabled = newScrollLeft < 50;
-    
+
     setDisableEndScroll(isEndScrollDisabled);
     setDisableStartScroll(isStartScrollDisabled);
   };
@@ -86,9 +91,9 @@ const FilterAutomation = ({ data, handleFilterData }) => {
   useEffect(() => {
     filterChangeHandler();
     showArrowHandle();
-     // eslint-disable-next-line
+    // eslint-disable-next-line
   }, [siteSelectedItems, categorySelectedItems]);
-  
+
   return (
     <nav
       className={`${

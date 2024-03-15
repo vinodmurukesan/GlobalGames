@@ -23,8 +23,8 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -34,12 +34,12 @@ li {
   list-style-type: none;
 }
 
-main .active{
+main .active {
   color: var(--primary);
   border-color: var(--primary);
 
   svg,
-  path{
+  path {
     fill: var(--primary);
   }
 }
@@ -58,9 +58,9 @@ main .active{
   border-radius: 10px;
 }
 
-main .activePadding{
+main .activePadding {
   padding: 0 20px 0 35px;
 }
-main .disabled{
+main .disabled {
   opacity: 0.2;
 }

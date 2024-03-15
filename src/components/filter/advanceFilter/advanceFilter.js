@@ -45,10 +45,10 @@ const OptionalFilter = ({
   };
   const filterSearch = (value, selectedList = selectedItems) => {
     const filterByValue = options.filter((item) =>
-      item.toLowerCase().includes(value.toLowerCase())
+      item.toLowerCase().includes(value.toLowerCase()),
     );
     const filterBySelected = filterByValue.filter(
-      (item) => !selectedList.includes(item)
+      (item) => !selectedList.includes(item),
     );
     setOptionList(filterBySelected);
   };
