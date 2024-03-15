@@ -18,69 +18,65 @@ const FilterAutomation = ({ data, handleFilterData }) => {
   const wrapperRef = useRef(null);
 
   const getFilterOptions = useCallback(() => {
-    const categoryFilter = [];
-    const siteFilter = [];
-    data.forEach((item) => {
-      const categoryItem = item.categories.map((category) => {
-        return category.title;
-      });
-      categoryFilter.push(...categoryItem);
-      const siteItem = item.sites.map((site) => {
-        return site.title;
-      });
-      siteFilter.push(...siteItem);
-    });
-    setCategoryOptions([...new Set(categoryFilter)]);
-    setSiteOptions([...new Set(siteFilter)]);
+    // Extract unique category titles from all items in 'data'
+    const categoryFilter = data.flatMap((item) =>
+      item.categories.map((category) => category.title)
+    );
+  
+    // Extract unique site titles from all items in 'data'
+    const siteFilter = data.flatMap((item) =>
+      item.sites.map((site) => site.title)
+    );
+  
+    // Update state variables with unique category and site titles
+    setCategoryOptions(Array.from(new Set(categoryFilter)));
+    setSiteOptions(Array.from(new Set(siteFilter)));
   }, [data]);
 
   const handleSiteChange = (dataList) => {
     if (siteSelectedItems.length) {
-      const filteredItem = dataList.filter((item) => {
-        return item.sites.find((siteItem) =>
-          siteSelectedItems.includes(siteItem.title)
-        );
-      });
-      return filteredItem;
+      // Filter dataList to include only items that have sites matching the selected site titles
+      return dataList.filter((item) =>
+        item.sites.some((siteItem) => siteSelectedItems.includes(siteItem.title))
+      );
     }
+    // If no site is selected, return the original dataList
     return dataList;
   };
 
   const handleCategoryChange = (dataList) => {
     if (categorySelectedItems.length) {
-      const filteredItem = dataList.filter((item) => {
-        return item.categories.find(
-          (catItem) => catItem.title === categorySelectedItems[0]
-        );
-      });
-      return filteredItem;
+      return dataList.filter((item) =>
+        item.categories.some((catItem) => catItem.title === categorySelectedItems[0])
+      );
     }
     return dataList;
   };
 
   const filterChangeHandler = () => {
-    const result = handleSiteChange(data);
-    const catResult = handleCategoryChange(result);
-    handleFilterData(catResult);
+    const filteredData = handleCategoryChange(handleSiteChange(data));
+    handleFilterData(filteredData);
   };
 
   const showArrowHandle = () => {
-    setShowArrow(
-      wrapperRef.current.scrollWidth > wrapperRef.current.clientWidth ||
-        wrapperRef.current.clientWidth < 600
-    );
+    const { scrollWidth, clientWidth } = wrapperRef.current;
+    setShowArrow(scrollWidth > clientWidth || clientWidth < 600);
   };
 
   const handleScroll = (value) => {
-    wrapperRef.current.scrollTo({
-      left: (wrapperRef.current.scrollLeft += value),
+    const { current } = wrapperRef;
+    const newScrollLeft = current.scrollLeft + value;
+    
+    current.scrollTo({
+      left: newScrollLeft,
       behavior: "smooth",
     });
-    setDisableEndScroll(
-      wrapperRef.current.scrollLeft + 50 >
-        wrapperRef.current.scrollWidth - wrapperRef.current.clientWidth
-    );
-    setDisableStartScroll(wrapperRef.current.scrollLeft < 50);
+    
+    const isEndScrollDisabled = newScrollLeft + 50 > current.scrollWidth - current.clientWidth;
+    const isStartScrollDisabled = newScrollLeft < 50;
+    
+    setDisableEndScroll(isEndScrollDisabled);
+    setDisableStartScroll(isStartScrollDisabled);
   };
 
   useEffect(() => {
